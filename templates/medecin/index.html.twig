@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue!{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="col-sm-9">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="card-title">Liste des Médecins</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Matricule</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Téléphone</th>
+      <th scope="col">Service</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for medecin in médecins|slice(0, 9)%}
+    <tr>
+      <th scope="row">{{ medecin.matricule }}</th>
+      <td>{{ medecin.nom }}</td>
+      <td>{{ medecin.prenom }}</td>
+      <td>{{ medecin.adresse }}</td>
+      <td>{{ medecin.telephone }}</td>  
+      <td>{{ medecin.service }}</td>
+      <td><a href="" class="btn btn-secondary">Modifier</a></td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+
+ <a href="{{ path('medecin_add')}}" class="btn btn-primary" >Ajouter Médecin</a>
+  </div>
+    </div>
+      </div>
+{% endblock %}
